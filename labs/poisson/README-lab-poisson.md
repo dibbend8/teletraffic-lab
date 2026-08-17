@@ -7,7 +7,7 @@ This folder contains the student lab materials for the Poisson‑arrival traffic
 - `extract_times.sh` — small helper to extract timestamps from a pcap using tshark
 - `.vscode/` — VS Code task and launch configurations for the lab (useful when opening the lab folder directly in VS Code)
 
-Link to example used in the lab: [poisson-demo.cc](/Users/dibbenduroy/ns-3-dev/scratch/poisson-demo.cc)
+Link to example used in the lab: [poisson-demo.cc](../../deps/ns-3-dev/scratch/poisson-demo.cc)
 
 ---
 
@@ -38,7 +38,7 @@ cd ns-3-dev
 
 ## Annotated walkthrough (important parts to inspect in poisson-demo.cc)
 
-Open: /Users/dibbenduroy/ns-3-dev/scratch/poisson-demo.cc
+Open: `deps/ns-3-dev/scratch/poisson-demo.cc`
 
 - PoissonSender::Setup(Address peerAddress, uint32_t packetSize, double meanRateHz)
   - Uses `ExponentialRandomVariable` with `Mean = 1.0 / meanRateHz` — this produces exponential interarrival times (Poisson process arrivals).
