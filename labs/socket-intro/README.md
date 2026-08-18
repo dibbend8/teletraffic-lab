@@ -7,15 +7,15 @@ The goal is to show:
 - a socket is an endpoint for communication
 - a server listens on a port
 - a client connects to that port
-- multiple clients can be handled at the same time by separate threads
-- the server can react when a packet/message arrives
+- the server handles one connection at a time in a simple sequential way
+- the server reacts when a message arrives
 
 This mirrors the way ns-3 uses sockets and callbacks, but it is much simpler and easier to inspect in plain Python.
 
 ## Files
 
-- `server.py` — a multi-client TCP server that accepts connections in parallel
-- `client.py` — a simple client that connects and sends messages
+- `server.py` — a simple sequential TCP server that handles one connection at a time
+- `client.py` — a simple client that opens sequential connections and sends messages
 
 ## Run it
 
@@ -63,11 +63,11 @@ These are the same ideas used in ns-3 socket applications:
 - receive them
 - react to them
 
-### 3. Parallel handling
+### 3. Sequential handling
 
-The server here starts a new Python thread for each client. That means multiple clients can connect and be served at the same time.
+This version accepts a connection, handles one message, closes it, and then waits for the next connection. That keeps the example easy to understand and easy to debug.
 
-This is analogous to ns-3 applications that register callbacks and process packets as they arrive, but without modeling the full protocol stack or link layer.
+This is the simplest possible socket model before students are ready for the more complex event-driven callbacks used in ns-3.
 
 ### 4. Callback-like behavior
 
@@ -103,7 +103,7 @@ But it teaches the core structure that appears again in ns-3:
 2. Add a simple server log with timestamps.
 3. Change the client to send 100 messages and measure round-trip latency.
 4. Compare this to the ns-3 demo where packets are scheduled with `Simulator::Schedule`.
-5. Discuss how the same pattern becomes event-driven in ns-3 instead of thread-driven in Python.
+5. Discuss how the same pattern becomes event-driven in ns-3 instead of a plain socket loop in Python.
 
 ## Important note
 

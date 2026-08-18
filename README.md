@@ -7,15 +7,18 @@ This repository contains the course materials for the ns-3 teletraffic/queueing 
 - Clone / checkout workflow: [CLONE-AND-SETUP.md](CLONE-AND-SETUP.md)
 - One-page student handout: [LAB-HANDOUT-ONE-PAGE.md](LAB-HANDOUT-ONE-PAGE.md)
 - WSL2 installation guide: [labs/poisson/STUDENT-SETUP-WSL2.md](labs/poisson/STUDENT-SETUP-WSL2.md)
-- Poisson lab materials: [labs/poisson/README-lab-poisson.md](labs/poisson/README-lab-poisson.md)
+- Event-driven models: [labs/events/README.md](labs/events/README.md)
+- Packet simulation lab: [labs/poisson/README-lab-poisson.md](labs/poisson/README-lab-poisson.md)
 - Markov chain lab: [labs/poisson/markov/README-markov.md](labs/poisson/markov/README-markov.md)
 - Socket basics lab: [labs/socket-intro/README.md](labs/socket-intro/README.md)
 
 ## Repository structure
 
-- `labs/poisson/` — Poisson traffic lab
+- `labs/events/` — pure event-driven examples (BSC, Markov chain, M/M/1 queue)
+- `labs/poisson/` — packet-level Poisson traffic lab using ns-3 applications and simulated packets
 - `labs/poisson/markov/` — Markov chain experiments
-- `labs/socket-intro/` — Python socket tutorial for understanding client/server behavior
+- `labs/socket-intro/` — Python socket tutorial showing a simple non-threaded client/server exchange
+- `labs/packet-sims/` — overview of packet-level ns-3 simulation workflow
 - `deps/ns-3-dev/` — upstream ns-3 source dependency
 
 ## Recommended student workflow

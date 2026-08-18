@@ -1,28 +1,23 @@
 #!/usr/bin/env python3
-"""Simple threaded TCP server for teaching socket basics.
+"""Simple sequential TCP server for teaching socket basics.
 
-This script listens for incoming connections, handles each client in a separate
-thread, and echoes back a message. It is intentionally simple and readable.
+This version accepts one connection at a time and handles it before accepting the
+next one. It is intentionally simple and easy to follow.
 """
 
 import argparse
 import socket
-import threading
 
 
-def handle_client(conn, addr):
+def handle_connection(conn, addr):
     print(f"[server] connected: {addr}")
     try:
-        while True:
-            data = conn.recv(1024)
-            if not data:
-                break
+        data = conn.recv(1024)
+        if data:
             message = data.decode("utf-8", errors="replace").strip()
             print(f"[server] received from {addr}: {message}")
             reply = f"ACK: {message}"
             conn.sendall(reply.encode("utf-8"))
-    except Exception as exc:
-        print(f"[server] error with {addr}: {exc}")
     finally:
         conn.close()
         print(f"[server] disconnected: {addr}")
@@ -39,8 +34,7 @@ def run_server(host: str, port: int):
     try:
         while True:
             conn, addr = server.accept()
-            thread = threading.Thread(target=handle_client, args=(conn, addr), daemon=True)
-            thread.start()
+            handle_connection(conn, addr)
     except KeyboardInterrupt:
         print("\n[server] shutting down")
     finally:
@@ -48,7 +42,7 @@ def run_server(host: str, port: int):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Simple threaded socket server")
+    parser = argparse.ArgumentParser(description="Simple sequential socket server")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=9001)
     args = parser.parse_args()
