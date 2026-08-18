@@ -9,11 +9,13 @@ This repository contains the course materials for the ns-3 teletraffic/queueing 
 - WSL2 installation guide: [labs/poisson/STUDENT-SETUP-WSL2.md](labs/poisson/STUDENT-SETUP-WSL2.md)
 - Poisson lab materials: [labs/poisson/README-lab-poisson.md](labs/poisson/README-lab-poisson.md)
 - Markov chain lab: [labs/poisson/markov/README-markov.md](labs/poisson/markov/README-markov.md)
+- Socket basics lab: [labs/socket-intro/README.md](labs/socket-intro/README.md)
 
 ## Repository structure
 
 - `labs/poisson/` — Poisson traffic lab
 - `labs/poisson/markov/` — Markov chain experiments
+- `labs/socket-intro/` — Python socket tutorial for understanding client/server behavior
 - `deps/ns-3-dev/` — upstream ns-3 source dependency
 
 ## Recommended student workflow
